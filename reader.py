@@ -1,11 +1,19 @@
 import csv
-with open('WGUPS Package File.csv', 'r') as file:
-    pack = csv.reader(file)
-    for row in pack:
-        print(row)
 
-with open('WGUPS Distance Table.csv', 'r') as file:
-    dist = csv.reader(file)
-    for row in dist:
-        print(row)
+def read_pack():
+    with open('data/WGUPS Package File.csv', 'r', encoding='utf-8-sig') as file:
+        pack = csv.reader(file)
+        rows = []
+        for row in pack:
+            rows.append(row)
+
+        return rows
+def read_dist():
+    with open('data/WGUPS Distance Table.csv', 'r', encoding='utf-8-sig') as file:
+        dist = csv.reader(file)
+        rows = []
+        for row in dist:
+            rows.append(row)
+
+        return rows
 
