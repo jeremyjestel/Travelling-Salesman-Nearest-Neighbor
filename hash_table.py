@@ -28,7 +28,7 @@ class hash_table:
     def resize(self, new_size):
 
         new_table = []
-        for i in range(len(self.table)):
+        for i in range(new_size):
             new_table.append([])
         for item in self.table:
             for pair in item:
@@ -37,7 +37,7 @@ class hash_table:
                     new_index = hash(key) % new_size
                     bucket_list = new_table[new_index]
                     key_value = [key, value]
-                    bucket_list[new_index].append(key_value)
+                    bucket_list.append(key_value)
         self.table = new_table
 
 

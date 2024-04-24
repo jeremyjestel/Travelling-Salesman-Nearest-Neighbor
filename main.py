@@ -20,3 +20,4 @@ for row in pack_file:
 
 for row in dist_file:
     print(row)
+    print(len(row))
