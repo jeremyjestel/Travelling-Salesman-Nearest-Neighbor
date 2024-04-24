@@ -19,10 +19,27 @@ class hash_table:
                 val[1] = item
                 return True
 
-        if len(bucket_list > 3):
+        if (len(bucket_list) > 3):
             self.resize(len(self.table)+1)
-        self.insert(key, item)
+        key_value = [key, item]
+        bucket_list.append(key_value)
         return True
+
+    def resize(self, new_size):
+
+        new_table = []
+        for i in range(len(self.table)):
+            new_table.append([])
+        for item in self.table:
+            for pair in item:
+                if pair is not None:
+                    key, value = pair
+                    new_index = hash(key) % new_size
+                    bucket_list = new_table[new_index]
+                    key_value = [key, value]
+                    bucket_list[new_index].append(key_value)
+        self.table = new_table
+
 
     def search(self, key):
         bucket = hash(key) % len(self.table)
@@ -32,16 +49,7 @@ class hash_table:
                 return kv[1]
         return None
 
-    def resize(self, new_size):
-        new_table = [None] * new_size
 
-        for item in self.table:
-            if item is not None:
-                key, value = item
-                new_index = hash(key) % new_size
-                new_table[new_index] = (key, value)
-
-        self.table = new_table
     def remove(self, key):
         bucket = hash(key) % len(self.table)
         bucket_list = self.table[bucket]
