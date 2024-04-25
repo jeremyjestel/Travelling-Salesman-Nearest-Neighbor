@@ -19,10 +19,13 @@ class hash_table:
                 val[1] = item
                 return True
 
-        if (len(bucket_list) > 3):
-            self.resize(len(self.table)+1)
         key_value = [key, item]
         bucket_list.append(key_value)
+        for i in range(len(self.table)):
+            if (len(bucket_list) > 3):
+                self.resize(len(self.table)+1)
+                i = 0
+
         return True
 
     def resize(self, new_size):

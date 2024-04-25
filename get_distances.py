@@ -1,7 +1,10 @@
-def get_distances(file, location):
+import reader
+
+
+def get_distances(location):
     index = 0
     distances = dict()
-
+    file = reader.read_dist()
     #find index of location
     for row in range(len(file)):
         if location == file[row][0]:
