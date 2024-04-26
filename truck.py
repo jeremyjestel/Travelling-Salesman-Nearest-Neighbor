@@ -1,7 +1,7 @@
 class truck:
     #array to hold package id aka "currently loaded"
     def __init__(self):
-        self.current = [None] * 16
+        self.current = [None] * 12
 
     def load(self, id):
         for new in id:
