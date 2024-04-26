@@ -8,3 +8,4 @@ class package:
         self.deadline = pack[5]
         self.weight = pack[6]
         self.special = pack[7]
+        self.status = "At The Hub"
