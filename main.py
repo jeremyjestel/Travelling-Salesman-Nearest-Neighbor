@@ -48,9 +48,7 @@ for i in range(len(truck1.current)):
             next = pack_table.search(pack_ind).address
             ind = pack_ind
     truck1.current.remove(ind)
-
     pack_table.search(ind).status = "Delivered"
-
     for rem_ind in truck1.current:
         obj = pack_table.search(rem_ind)
         if obj.address == next:
@@ -160,7 +158,6 @@ for i in range(len(truck2.current)):
                 obj.status = "Delivered"
                 truck2.current[rem_ind] = None
                 rem_ind-=1
-
         rem_ind+=1
     truck2_dist2 += min_dist
     location_now = next
