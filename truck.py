@@ -4,6 +4,7 @@ class truck:
         self.current = [None] * 12
 
     def load(self, id):
+        self.current = [None] * len(id)
         for new in id:
             for val in range(len(self.current)):
                 if self.current[val] == None:

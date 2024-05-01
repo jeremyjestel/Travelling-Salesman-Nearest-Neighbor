@@ -1,3 +1,4 @@
 def miles_time(miles):
     hours = miles / 18
-    return hours
+    minutes = hours * 60
+    return minutes
