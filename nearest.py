@@ -1,4 +1,4 @@
-from enroute import enroute
+
 from get_distances import get_distances
 from mph import miles_time
 
@@ -11,7 +11,7 @@ def nearest(truck, pack_table, loading, offset):
     total = offset
     truck.current = [None] * len(loading)
     truck.load(loading)
-    enroute(pack_table, truck.current)
+    pack_table.enroute(truck.current)
 
     for i in range(len(truck.current)):
         if truck.current == [] or all(v is None for v in truck.current) == True:

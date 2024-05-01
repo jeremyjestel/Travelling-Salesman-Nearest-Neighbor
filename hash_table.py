@@ -2,6 +2,7 @@
 # C950 - Webinar-1 - Let’s Go Hashing
 # W-1_ChainingHashTable_zyBooks_Key-Value.py
 # Ref: zyBooks: Figure 7.8.2: Hash table using chaining.
+from package import package
 
 
 class hash_table:
@@ -51,3 +52,16 @@ class hash_table:
             if kv[0] == key:
                 return kv[1]
         return None
+
+    def pop_table(self, pack_file):
+        i = 0
+        packages = [None] * 40
+        for row in pack_file:
+            packages[i] = package(row)
+            self.insert(packages[i].id, packages[i])
+            i += 1
+
+    def enroute(self, packs):
+        for pack in packs:
+            obj = self.search(pack)
+            obj.status = "En Route"
