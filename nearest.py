@@ -1,6 +1,6 @@
 
-from get_distances import get_distances
-from mph import miles_time
+from helpers.get_distances import get_distances
+from helpers.mph import miles_time
 
 
 def nearest(truck, pack_table, loading, offset):
@@ -29,8 +29,9 @@ def nearest(truck, pack_table, loading, offset):
 
         total += min_dist
         minutes = miles_time(total)
-        path.append([ind, total, minutes])
+        frame = truck.current.copy()
         truck.current.remove(ind)
+        path.append([ind, total, minutes, frame])
         pack_table.search(ind).status = "Delivered"
         location_now = next_loc
 
@@ -40,13 +41,14 @@ def nearest(truck, pack_table, loading, offset):
             if rem_obj is not None:
                 if rem_obj.address == next_loc:
                     rem_obj.status = "Delivered"
-                    path.append([truck.current[rem_ind], total, minutes])
+                    frame = truck.current.copy()
+                    path.append([truck.current[rem_ind], total, minutes, frame])
                     truck.current.remove(truck.current[rem_ind])
                     continue
             rem_ind += 1
     dist_now = get_distances(location_now)
     hub = float(dist_now["HUB"])
     total += hub
-    path.append(["HUB", total])
+    path.append(["HUB", total, 0.0, []])
 
     return path

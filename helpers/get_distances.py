@@ -1,6 +1,4 @@
-import reader
-
-
+from helpers import reader
 def get_distances(location):
     index = 0
     distances = dict()
