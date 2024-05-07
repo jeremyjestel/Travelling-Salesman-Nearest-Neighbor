@@ -3,14 +3,12 @@
 # W-1_ChainingHashTable_zyBooks_Key-Value.py
 # Ref: zyBooks: Figure 7.8.2: Hash table using chaining.
 from classes.package import package
-
 class hash_table:
     #initialize the hash table
     def __init__(self, initial_capacity=10):
         self.table = []
         for i in range(initial_capacity):
             self.table.append([])
-
     #insert a key and value into the hash table
     def insert(self, key, item):
         bucket = hash(key) % len(self.table)
@@ -27,7 +25,6 @@ class hash_table:
                 self.resize(len(self.table)+1)
                 i = 0
         return True
-
     #resize the table until all buckets are chained less than 4 deep
     def resize(self, new_size):
         new_table = []
@@ -42,7 +39,6 @@ class hash_table:
                     key_value = [key, value]
                     bucket_list.append(key_value)
         self.table = new_table
-
         #Find a value with key in table
     def search(self, key):
         bucket = hash(key) % len(self.table)

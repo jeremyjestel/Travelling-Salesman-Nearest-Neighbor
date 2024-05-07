@@ -7,7 +7,7 @@ from helpers.lookup import at_time, lookup
 from helpers.mph import to_str
 from nearest import nearest
 from classes.truck import truck
-print("Welcome to WGUPS Nearest Neighbor delivery system!\n")
+print("\nWelcome to WGUPS Nearest Neighbor delivery system!")
 while True:
     # read package file in
     pack_file = reader.read_pack()
@@ -29,6 +29,9 @@ while True:
     loading = ["5", "37", "38", "9", "3", "6", "12", "17", "24", "31", "32", "36", "28"]
     path_2.extend(nearest(truck2, pack_table, loading, path_2[-1][1]))
 
+    update_1 = None
+    update_2 = None
+
     raw = input("\nWhat would you like to do?\nSubmit A to run the algorithm view the path the packages take and at what time they are dropped off: \nSubmit B to lookup a specific time:\nSubmit C to look up a specific package's details:\nSubmit Q to quit this program:\n")
     if raw == "A":
         print("Truck 1:")
@@ -49,14 +52,16 @@ while True:
         update_2 = at_time(time, path_2)
         update_1.extend(update_2)
         # sort the full status list
-        sorted = sorted(update_1, key=lambda x: int(x[0]))
+        update_1 = sorted(update_1, key=lambda x: int(x[0]))
         #print the sorted variable
-        for line in sorted:
+        for line in update_1:
             print("Package " +line[0] + " is " +  line[1] + " and its delivery time is " + line[2])
         print("Total Mileage Travelled " + str(path_1[-1][1] + path_2[-1][1]))
     elif raw == "C":
+        #lookup specific package from user input
         id = input("Lookup a specific package ID:")
         obj = lookup(pack_table, id)
+        #error checking
         if obj is None:
             print("Key is incorrect")
         else:
