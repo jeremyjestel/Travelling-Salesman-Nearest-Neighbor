@@ -1,8 +1,9 @@
 class truck:
     #array to hold package id aka "currently loaded"
+   #initialize packagres loaded on truck to none
     def __init__(self):
-        self.current = [None] * 12
-
+        self.current = None
+    # add array of packages to currently loaded
     def load(self, id):
         self.current = [None] * len(id)
         for new in id:
@@ -10,12 +11,4 @@ class truck:
                 if self.current[val] == None:
                     self.current[val] = new
                     break
-
-
-    def replace(self, id, spot):
-        self.current[spot] = id
-
-    def remove(self, id):
-        for val in self.current:
-            if val == id:
-                val = None
+    #

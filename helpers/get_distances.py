@@ -8,14 +8,12 @@ def get_distances(location):
         if location == file[row][0]:
             index = row
             break
-
 #check whole row for not none starting at index 2
     for i in range(2, len(file[index])):
         if file[index][i] != '' and file[index][i] != '0.0':
             distances[file[i-2][0]] = file[index][i]
         else:
             break
-
     index += 2
 #check whole column for not none and not the crossover element
     for i in range(0, len(file)):

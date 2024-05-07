@@ -1,4 +1,5 @@
 class package:
+    #initialize all values of package class
     def __init__(self, pack):
         self.id = pack[0]
         self.address = pack[1]
@@ -9,3 +10,4 @@ class package:
         self.weight = pack[6]
         self.special = pack[7]
         self.status = "At The Hub"
+        self.time = ""

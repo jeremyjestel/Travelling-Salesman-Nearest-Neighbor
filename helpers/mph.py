@@ -1,10 +1,9 @@
 from math import floor
-
-
+#convert miles driven to hours driving
 def miles_time(miles):
     hours = miles / 18
     return hours
-
+#convert the time string to minutes
 def to_minutes(time):
     time = list(time)
     if len(time) == 4:
@@ -15,7 +14,7 @@ def to_minutes(time):
         min = int(time[3] + time[4])
     minutes = (hours * 60 + min) - 480
     return minutes
-
+#convert amount driven to a string in HH:MM format
 def to_str(tmp_hours):
     start = 8
     hours = floor(tmp_hours)
@@ -28,4 +27,3 @@ def to_str(tmp_hours):
     else:
         min = str(min)
     return hour + ":" + min
-
